@@ -23,7 +23,7 @@ pub fn player_input(player:&mut Player, turn_num: i32 ) -> io::Result<()> {
     stdin.read_line(&mut input)?;
 
     player.player_selection = input.to_ascii_lowercase().replace('\n', "");
-    dbg!(&player.player_selection);
+    &player.player_selection;
 
     Ok(())
 }
