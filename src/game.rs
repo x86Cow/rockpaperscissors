@@ -2,7 +2,7 @@ use std::io;
 use player::Player;
 
 #[path ="./player.rs"]
-mod player;
+pub(crate) mod player;
 
 
 
@@ -23,7 +23,6 @@ pub fn player_input(player:&mut Player, turn_num: i32 ) -> io::Result<()> {
     stdin.read_line(&mut input)?;
 
     player.player_selection = input.to_ascii_lowercase().replace('\n', "");
-    &player.player_selection;
 
     Ok(())
 }

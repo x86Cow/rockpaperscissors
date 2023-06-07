@@ -3,16 +3,16 @@ use game::*;
 #[path ="./game.rs"]
 mod game;
 
-#[path = "./player.rs"]
-mod player;
+// #[path = "./player.rs"]
+// mod player;
 
 fn main(){
-    let mut gameInfo = game::GameInfo {
+    let mut game_info = game::GameInfo {
         player_one_turn: true,
         turn_num: 1,
     };
 
-    let mut player1 = player::Player {
+    let mut player1 = game::player::Player {
         player_selection: "".to_string(),
     };
 
@@ -21,16 +21,16 @@ fn main(){
     };
 
     loop {
-        if gameInfo.player_one_turn {
-            gameInfo.turn_num = 1;
-            player_input(&mut player1, gameInfo.turn_num);
-            gameInfo.turn_num = 2;
+        if game_info.player_one_turn {
+            game_info.turn_num = 1;
+            player_input(&mut player1, game_info.turn_num);
+            game_info.turn_num = 2;
         } else {
-            gameInfo.turn_num = 2;
-            player_input(&mut player2, gameInfo.turn_num);
-            gameInfo.turn_num = 1;
+            game_info.turn_num = 2;
+            player_input(&mut player2, game_info.turn_num);
+            game_info.turn_num = 1;
         }
-        gameInfo.player_one_turn = !gameInfo.player_one_turn;
+        game_info.player_one_turn = !game_info.player_one_turn;
         
         game::wins(&player1, &player2);
     }
